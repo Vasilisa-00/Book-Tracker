@@ -80,7 +80,9 @@ def filter_books():
 
 #функция сброса фильтров
 def reset_filter():
-    pass
+    ent_f_genre.delete(0, tk.END)
+    ent_f_pages.delete(0, tk.END)
+    display_books()
 
 #главное окно приложения
 window = tk.Tk()
