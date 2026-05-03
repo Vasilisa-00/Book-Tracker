@@ -14,7 +14,7 @@ def load_data():
         try:
             with open(data_file, "r", encoding="utf-8") as file:
                 books = json.load(file)
-        except Exception:
+        except (ValueError, OSError):
             books = []
 
 #функция сохранения данных
@@ -87,7 +87,7 @@ def reset_filter():
 #главное окно приложения
 window = tk.Tk()
 window.title("Book Tracker (Трекер прочитанных книг)")
-window.geometry("700x550")
+window.geometry("900x550")
 
 load_data()
 
@@ -112,7 +112,7 @@ ent_pages = ttk.Entry(frame_form)
 ent_pages.grid(row=1, column=3, padx=5, pady=5)
 
 #кнопка добавления новой книги
-btn_add = ttk.Button(frame_form, text="Добавить книгу", command=add_book)
+btn_add = tk.Button(frame_form, bg="green", fg="white", text="Добавить книгу", command=add_book)
 btn_add.grid(row=2, column=0, columnspan=4, pady=10)
 
 #интерфейс фильтров
@@ -127,18 +127,19 @@ ttk.Label(frame_filter, text="Мин. кол-во страниц:").pack(side="l
 ent_f_pages = ttk.Entry(frame_filter, width=10)
 ent_f_pages.pack(side="left", padx=5)
 
-ttk.Button(frame_filter, text="Применить", command=filter_books).pack(side="left", padx=5)
-ttk.Button(frame_filter, text="Сбросить", command=reset_filter).pack(side="left", padx=5)
+tk.Button(frame_filter, text="Применить", bg="blue", fg="white", command=filter_books).pack(side="left", padx=5)
+tk.Button(frame_filter, text="Сбросить", bg="red", fg="white", command=reset_filter).pack(side="left", padx=5)
 
 #таблица
 table = ttk.Treeview(window, columns=("Title", "Author", "Genre", "Pages"), show="headings")
 table.heading("Title", text="Название")
 table.heading("Author", text="Автор")
 table.heading("Genre", text="Жанр")
-table.heading("Pages", text="Страниц")
+table.heading("Pages", text="Кол-во страниц")
 table.pack(pady=10, padx=10, fill="both", expand=True)
 
 # Инициализация таблицы при запуске
 display_books()
 
-window.mainloop() #запуск непрервного цикла окна
+if __name__ == "__main__":
+    window.mainloop() #запуск непрервного цикла окна
