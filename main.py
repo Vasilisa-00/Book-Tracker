@@ -24,7 +24,12 @@ def save_data():
 
 #функция отображения книг
 def display_books(data_to_show=None):
-    pass
+    for i in table.get_children():
+        table.delete(i)
+    # Если данные для показа не переданы, берем основной список
+    data = data_to_show if data_to_show is not None else books
+    for book in data:
+        table.insert("", "end", values=(book["title"], book["author"], book["genre"], book["pages"]))
 
 #функция добавления книг
 def add_book():
