@@ -66,7 +66,17 @@ def add_book():
 
 #функция фильтрации книг
 def filter_books():
-    pass
+    filter_genre = ent_f_genre.get().lower().strip()
+    filter_pages = ent_f_pages.get().strip()
+
+    filtered = books
+    #проверка выбора фильтра
+    if filter_genre:
+        filtered = [b for b in filtered if filter_genre in b["genre"].lower()]
+    if filter_pages and filter_pages.isdigit():
+        filtered = [b for b in filtered if b["pages"] >= int(filter_pages)]
+
+    display_books(filtered)
 
 #функция сброса фильтров
 def reset_filter():
