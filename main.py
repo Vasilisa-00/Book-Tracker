@@ -33,7 +33,36 @@ def display_books(data_to_show=None):
 
 #функция добавления книг
 def add_book():
-    pass
+    title = ent_title.get().strip()
+    author = ent_author.get().strip()
+    genre = ent_genre.get().strip()
+    pages = ent_pages.get().strip()
+
+    #проверка на заполнение полей
+    if not (title and author and genre and pages):
+        messagebox.showwarning("Ошибка", "Заполните все поля!")
+        return
+    # проверка на введение числа страниц
+    if not pages.isdigit():
+        messagebox.showwarning("Ошибка", "Количество страниц должно быть числом!")
+        return
+    #добавление в список
+    new_book = {
+        "title": title,
+        "author": author,
+        "genre": genre,
+        "pages": int(pages)
+    }
+    books.append(new_book)
+
+    save_data()
+    display_books()
+
+    #очистка полей
+    ent_title.delete(0, tk.END)
+    ent_author.delete(0, tk.END)
+    ent_genre.delete(0, tk.END)
+    ent_pages.delete(0, tk.END)
 
 #функция фильтрации книг
 def filter_books():
