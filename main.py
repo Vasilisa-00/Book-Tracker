@@ -9,7 +9,13 @@ books = []
 
 #функция загрузки
 def load_data():
-    pass
+    global books
+    if os.path.exists(data_file):
+        try:
+            with open(data_file, "r", encoding="utf-8") as file:
+                books = json.load(file)
+        except Exception:
+            books = []
 
 #функция сохранения данных
 def save_data():
