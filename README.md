@@ -56,16 +56,16 @@
 ![Скриншот](bookapp.png).
 
 **Добавление данных:**
-[Скриншот](bookadd.png).
+![Скриншот](bookadd.png).
 
 **Фильтрация по жанру:**
-[Скриншот](bookfilter.png)
+![Скриншот](bookfilter.png)
 
 **Фильтрация по страницам:**
-[Скриншот](pagesfilterbook.png)
+![Скриншот](pagesfilterbook.png)
 
 **Ошибка числа страниц:**
-[Скриншот](errorbook1.png)
+![Скриншот](errorbook1.png)
 
 **Ошибка заполнения полей:**
-[Скриншот](errorbook2.png)
+![Скриншот](errorbook2.png)
