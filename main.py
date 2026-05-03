@@ -19,7 +19,8 @@ def load_data():
 
 #функция сохранения данных
 def save_data():
-    pass
+    with open(data_file, "w", encoding="utf-8") as f:
+        json.dump(books, f, ensure_ascii=False, indent=4)
 
 #функция отображения книг
 def display_books(data_to_show=None):
